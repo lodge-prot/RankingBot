@@ -1,0 +1,4 @@
+# Qiitaの更新に合わせて起動
+15 9,17 * * * /usr/local/bin/python3.7 /main.py qiita 1>> log/qiita.log 2>> log/qiita_error.log
+
+# はてブはいつだろ？？

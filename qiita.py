@@ -42,7 +42,7 @@ def get_qiita_daily(url):
     return msg_list
 
 def main(argv):
-    c = lc.LoadConfig("./setup.ini")
+    c = lc.LoadConfig()
     L = get_qiita_daily(c.qiita_url)
     ss.send_slack(L, c)
 

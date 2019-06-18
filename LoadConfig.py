@@ -1,19 +1,43 @@
+# coding: UTF-8
 import configparser
 import sys
 import os
 
 class LoadConfig():
-    def __init__(self, f):
+    def __init__(self, f='./setup.ini'):
         self.file = f
         inifile = configparser.ConfigParser()
         inifile.read(self.file, 'UTF-8')
         self.load_config(inifile)
 
     def load_config(self, inf):
+        """
+        設定ファイルのマッピング
+        """
+        self.__version          = inf.get('General', 'VERSION')
+        self.__request_timeout  = inf.get('General', 'REQUEST_TIMEOUT')
+        self.__sleep_time       = inf.get('General', 'SLEEP_TIME')
+        self.__retry_num        = inf.get('General', 'RETRY_NUM')
         self.__slack_web_token  = inf.get('slack', 'SLACK_WEB_TOKEN')
         self.__qiita_url        = inf.get('qiita', 'qiita_url')
+        self.__qiita_url        = inf.get('qiita', 'qiita_url')
         self.__hatebu_url       = inf.get('hatebu', 'hatebu_url')
-        self.__sleep_time       = inf.get('General', 'SLEEP_TIME')
+
+    @property
+    def version(self):
+        return self.__version
+
+    @property
+    def request_timeout(self):
+        return self.__request_timeout
+
+    @property
+    def retry_num(self):
+        return self.__retry_num
+
+    @property
+    def slack_web_token(self):
+        return self.__slack_web_token
 
     @property
     def slack_web_token(self):
@@ -30,6 +54,11 @@ class LoadConfig():
     @property
     def sleep_time(self):
         return self.__sleep_time
+
+    @sleep_time.setter
+    def posit(self, sleep_time):
+        self.__sleep_time = sleep_time
+        return 0
 
     def get_platform():
         # Cross compiling
