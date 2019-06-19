@@ -18,9 +18,10 @@ class LoadConfig():
         self.__request_timeout  = inf.get('General', 'REQUEST_TIMEOUT')
         self.__sleep_time       = inf.get('General', 'SLEEP_TIME')
         self.__retry_num        = inf.get('General', 'RETRY_NUM')
+        self.__max_send_line    = inf.get('General', 'MAX_SEND_LINE')
         self.__slack_web_token  = inf.get('slack', 'SLACK_WEB_TOKEN')
         self.__qiita_url        = inf.get('qiita', 'qiita_url')
-        self.__qiita_url        = inf.get('qiita', 'qiita_url')
+        self.__tvranking_url    = inf.get('tvranking', 'tvranking_url')
         self.__hatebu_url       = inf.get('hatebu', 'hatebu_url')
 
     @property
@@ -54,6 +55,14 @@ class LoadConfig():
     @property
     def sleep_time(self):
         return self.__sleep_time
+
+    @property
+    def max_send_line(self):
+        return self.__max_send_line
+
+    @property
+    def tvranking_url(self):
+        return self.__tvranking_url
 
     @sleep_time.setter
     def posit(self, sleep_time):

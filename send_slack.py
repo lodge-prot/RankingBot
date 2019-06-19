@@ -35,7 +35,7 @@ def send_slack(L, lc):
                 "unfurl_links": True,
                 'link_names': 1,  #名前をリンク化
             }))
-            if (i == 5):
+            if (i == int(lc.max_send_line)):
                 break
             time.sleep(int(lc.sleep_time))
     except requests.exceptions.InvalidSchema as exi:

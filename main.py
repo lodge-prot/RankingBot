@@ -20,15 +20,18 @@ def sigterm_handler(signal_number, stack_frame):
 def main(argv):
     if (len(argv) != 2):
         s = '''
-Usage : main.py [qiita|hatebu]
+Usage : main.py [qiita|hatebu|tvranking]
         '''
         print(s)
         sys.exit()
 
     kind_ranking = argv[1]
     if kind_ranking == "qiita":
-        import qiita
+        from modules import qiita
         qiita.main(argv)
+    elif kind_ranking == "tvranking":
+        from modules import tvranking
+        tvranking.main(argv)
     elif kind_ranking == "hatebu":
         pass
     else :
