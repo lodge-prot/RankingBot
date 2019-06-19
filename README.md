@@ -34,13 +34,17 @@ urllib3==1.25.3
 ## Usage
 
 ```
-$ python main.py [qiita|hatebu]
+$ python main.py [qiita|hatebu|tvranking]
 ```
 
 ## Installation
 
 ```
 $ git clone https://github.com/lodge-prot/RankingBot.git
+$ cd RankingBot
+
+$ docker build -t ranking .
+$ docker run -it ranking /bin/bash
 ```
 
 ## License
