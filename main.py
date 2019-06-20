@@ -2,6 +2,29 @@
 import sys
 import signal
 import datetime
+import subprocess
+from urllib.parse import urlparse
+
+def ping(url_list):
+    """
+    Confirm the spray target site and communication
+    If it does not connect, the program ends...
+    """
+    for url in url_list:
+        p_url = urlparse(url)
+        domain = p_url.netloc
+        ping = subprocess.Popen(["ping", "-c", "1", domain],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
+               )
+        out, error = ping.communicate()
+
+        if error:
+            print('{}'.format(error.rstrip()).replace('b\'ping', 'Network Error'))
+            sys.exit()
+        else:
+            #print("OK" if dbg else "")
+            pass
 
 def print_datetime(prefix):
     """
@@ -19,13 +42,12 @@ def sigterm_handler(signal_number, stack_frame):
 
 def main(argv):
     if (len(argv) != 2):
-        s = '''
-Usage : main.py [qiita|hatebu|tvranking]
-        '''
+        s =  "Usage : main.py [qiita|hatebu|tvranking]"
         print(s)
         sys.exit()
 
     kind_ranking = argv[1]
+
     if kind_ranking == "qiita":
         from modules import qiita
         qiita.main(argv)
