@@ -4,4 +4,4 @@ __pycache__/
 *.rdb
 *.pyo
 *.log
-docker/db/data/*
+docker/db/data/
