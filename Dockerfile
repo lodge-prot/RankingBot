@@ -9,10 +9,8 @@ ENV LANGUAGE ja_JP:ja
 ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 
-RUN apt-get install -y vim less
+RUN apt-get install -y vim less mysql-server
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 
-WORKDIR /root
-RUN git clone https://github.com/lodge-prot/RankingBot
-RUN cd RankingBot && pip install -r requirements.txt
+WORKDIR /root/rankingbot
