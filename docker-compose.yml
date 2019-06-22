@@ -58,6 +58,8 @@ services:
   analysis:
     container_name: analysis
     build: ./analysis
+    volumes:
+      - ./analysis:/root/analysis
     tty: true
 
 networks:

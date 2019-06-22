@@ -23,4 +23,6 @@ RUN set -eux; \
     chmod -R a+w $RUSTUP_HOME $CARGO_HOME; \
     rustup --version; \
     cargo --version; \
-rustc --version;
+    rustc --version;
+
+WORKDIR /root/analysis
