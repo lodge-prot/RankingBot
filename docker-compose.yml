@@ -55,6 +55,11 @@ services:
         #links:
         #- mysql_host
 
+  analysis:
+    container_name: analysis
+    build: ./analysis
+    tty: true
+
 networks:
   def_my_network:
     driver: bridge
