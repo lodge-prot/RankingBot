@@ -55,6 +55,16 @@ services:
         #links:
         #- mysql_host
 
+  redis:
+    container_name: redis
+    image: redis:3.0.5
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - 6379:6379
+    restart: always
+    tty: true
+
   analysis:
     container_name: analysis
     build: ./analysis
