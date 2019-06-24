@@ -24,6 +24,10 @@ class LoadConfig():
         self.__tvranking_url    = inf.get('tvranking', 'tvranking_url')
         self.__hatebu_url       = inf.get('hatebu', 'hatebu_url')
 
+        if (self.__slack_web_token == ""):
+            print("The format of 'setup.ini' is incorrect : SLACK_WEB_TOKEN")
+            sys.exit()
+
     @property
     def version(self):
         return self.__version
