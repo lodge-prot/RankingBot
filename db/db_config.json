@@ -1,0 +1,7 @@
+{
+  "user" : "docker" ,
+  "passwd" : "docker" ,
+  "host" : "mysql_host" ,
+  "port" : 3306 ,
+  "db" : "my_database"
+}
