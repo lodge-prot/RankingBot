@@ -26,7 +26,6 @@ def get_hatebu_ranking(conf):
         users = article.find("a", {"class" : "js-keyboard-entry-page-openable"}).find("span").contents[0]
         tmp = "[{} users] {} ({})".format(users, title, ref)
         ret.append(tmp)
-
     return ret
 
 def main(argv):
