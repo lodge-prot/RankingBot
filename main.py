@@ -55,7 +55,8 @@ def main(argv):
         from modules import tvranking
         tvranking.main(argv)
     elif kind_ranking == "hatebu":
-        pass
+        from modules import hatebu
+        hatebu.main(argv)
     else :
         print("Unkown Ranking...")
 
