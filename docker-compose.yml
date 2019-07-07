@@ -65,6 +65,14 @@ services:
     restart: always
     tty: true
 
+  rest:
+    container_name: rest
+    build: rest
+    ports:
+      - 5001:5000
+    restart: always
+    tty: true
+
   analysis:
     container_name: analysis
     build: ./analysis

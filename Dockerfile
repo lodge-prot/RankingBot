@@ -16,6 +16,7 @@ RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 
 COPY ./requirements.txt /root/rankingbot
+COPY ./.dotfiles/.bashrc /root/.bashrc
 RUN pip install -r requirements.txt
 
 #EXPOSE 80
