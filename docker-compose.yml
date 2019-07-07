@@ -5,7 +5,7 @@ services:
     build: .
     container_name: rankingbot
     volumes:
-      - ./:/root/rankingbot
+      - ./rankingbot:/root/rankingbot
     ports:
       - 8888:80
     depends_on:
