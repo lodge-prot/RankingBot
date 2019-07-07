@@ -20,6 +20,7 @@ class LoadConfig():
         self.__retry_num        = inf.get('General', 'RETRY_NUM')
         self.__max_send_line    = inf.get('General', 'MAX_SEND_LINE')
         self.__slack_web_token  = inf.get('slack', 'SLACK_WEB_TOKEN')
+        self.__slack_link_name  = inf.get('slack', 'SLACK_LINK_OPTION')
         self.__qiita_url        = inf.get('qiita', 'qiita_url')
         self.__tvranking_url    = inf.get('tvranking', 'tvranking_url')
         self.__hatebu_url       = inf.get('hatebu', 'hatebu_url')
@@ -47,6 +48,10 @@ class LoadConfig():
     @property
     def slack_web_token(self):
         return self.__slack_web_token
+
+    @property
+    def slack_link_name(self):
+        return self.__slack_link_name
 
     @property
     def qiita_url(self):

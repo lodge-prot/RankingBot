@@ -33,7 +33,7 @@ def send_slack(L, lc):
             requests.post(lc.slack_web_token, data = json.dumps({
                 'text': L[i],  #通知内容
                 "unfurl_links": True,
-                'link_names': 1,  #名前をリンク化
+                'link_names': lc.slack_link_name,  #名前をリンク化
             }))
             if (i == int(lc.max_send_line)):
                 break

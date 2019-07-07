@@ -37,7 +37,7 @@ def get_qiita_daily(url):
     for val in di['trend']['edges']:
         tn = val['node']
         article_url = '{}{}/items/{}'.format(url, tn['author']['urlName'], tn['uuid'])
-        tmp = '[{}]({})'.format(tn['title'], article_url)
+        tmp = '[{}]({})'.format(tn['title'][:17], article_url)
         msg_list.append(tmp)
     return msg_list
 
