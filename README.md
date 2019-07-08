@@ -53,3 +53,4 @@ $ docker run -it ranking /bin/bash
 
 * [ryuichi1208](https://github.com/ryuichi1208)
 * [sasakino](https://github.com/sasakino)
+* [kanji1110](https://github.com/kanji1110)
