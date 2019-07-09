@@ -4,5 +4,5 @@ jobs:
     steps:
       - checkout
       - run:
-          command: docker-compose up -d
+          command: docker network create --driver bridge rank_net && docker-compose up -d
           name: run test
