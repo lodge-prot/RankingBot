@@ -1,3 +1,4 @@
+version: 2.1
 jobs:
   build:
     machine: true
@@ -6,3 +7,9 @@ jobs:
       - run:
           command: docker network create --driver bridge rank_net && docker-compose up -d
           name: run test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
