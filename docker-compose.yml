@@ -123,4 +123,4 @@ services:
 networks:
   default:
     external:
-      name: common_link
+      name: rank_net
