@@ -3,11 +3,12 @@
 use warnings;
 use strict;
 no warnings 'once';
+use Sys::Hostname;
 
 #use DateTime;
 
 sub exec_command {
-    print "===== yum Package Check =====\n";
+    print "===== Yum Package Install Check =====\n";
     my @exec_command = ('docker', 'docker-compose', 'pip');
     push @exec_command, @_;
 
@@ -33,7 +34,8 @@ sub check_installed {
 }
 
 sub get_pip_list{
-    print "===== Pip Package Check =====\n";
+    print "===== Pip Package Install Check =====\n";
+    my @res_buf;
     my $file_path = $_[0];
     my @installed_package_list;
 
@@ -55,14 +57,31 @@ sub get_pip_list{
     while (<FH>) {
         s/=.*$//;
         if (check_installed $_, \@installed_package_list) {
-            print "[FAILED] : $_";
+            #print "[FAILED] : $_";
+            push @res_buf, "[FAILED] : $_";
         } else {
-            print "[OK] : $_";
+            #print "[OK] : $_";
+            push @res_buf, "[OK] : $_";
         }
+    }
+    foreach(reverse sort @res_buf) {
+        print $_;
     }
 }
 
 sub main {
+    print "===== Base Info =====\n";
+    print "EXEC DATE    : $^T\n";
+    print "OS           : $^O\n";
+    my $host = hostname();
+    print "HOSTNAME     : ", $host, "\n";
+    my $ipaddr_bin = gethostbyname($host);
+    my @ipaddr_arr = unpack("C4",$ipaddr_bin);
+    my $ipaddr_str = sprintf("%u.%u.%u.%u",@ipaddr_arr);
+    print "IP Addr      : $ipaddr_str\n";
+    print "Perl version : $^V\n";
+
+
     exec_command @_;
     get_pip_list "../rankingbot/requirements.txt";
     exit(0);
