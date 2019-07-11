@@ -5,15 +5,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Stack
-          command: wget -qO- https://get.haskellstack.org/ | sh
-      - run:
-          name: Install Linter
-          command: git clone https://github.com/hadolint/hadolint && cd hadolint && stack install
-      - run:
-          name: run lint
-          command: find . -name "Dockerfile" | xargs hadolint
-
+          name: start container
+          command: docker pull hadolint/hadolint && \
+                   find . -name "Dockerfile" | xargs -L 1 bash -c 'echo "${0}" ; docker run --rm -i hadolint/hadolint < "${0}"'
   build:
     machine: true
     steps:
@@ -30,4 +24,6 @@ workflows:
   build_and_test:
     jobs:
       - lint
-      - build
+        #- build
+        # requires:
+        #- lint
