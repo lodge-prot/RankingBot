@@ -6,8 +6,8 @@ jobs:
       - checkout
       - run:
           name: start container
-          command: docker pull hadolint/hadolint && \
-                   find . -name "Dockerfile" | xargs -L 1 bash -c 'echo "${0}" ; docker run --rm -i hadolint/hadolint < "${0}"'
+          command: docker pull hadolint/hadolint
+                   #find . -name "Dockerfile" | xargs -L 1 bash -c 'echo "${0}" ; docker run --rm -i hadolint/hadolint < "${0}"'
   build:
     machine: true
     steps:
@@ -24,6 +24,6 @@ workflows:
   build_and_test:
     jobs:
       - lint
-        #- build
-        # requires:
-        #- lint
+      - build:
+          requires:
+            - lint
