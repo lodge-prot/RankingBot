@@ -5,6 +5,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Stack
+          command: wget -qO- https://get.haskellstack.org/ | sh
+      - run:
           name: Install Linter
           command: git clone https://github.com/hadolint/hadolint && cd hadolint && stack install
       - run:
