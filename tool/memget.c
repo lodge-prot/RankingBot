@@ -112,7 +112,6 @@ void parse_opt(int argc, char **argv) {
 
 	//オプション重複排除/指定数値の妥当性確認
 	if(1 < opt_flg || get_memsize == 0 || argc < 2) {
-        printf("aaa %d %d %d \n", opt_flg, get_memsize, argc);
 		usage();
 	}
 }
