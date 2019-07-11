@@ -1,5 +1,14 @@
 version: 2.1
 jobs:
+  lint:
+    docker:
+      - image: hadolint/hadolint
+    steps:
+      - checkout
+      - run:
+          name: run lint
+          command: find . -name "Dockerfile" | xargs hadolint
+
   build:
     machine: true
     steps:
@@ -15,4 +24,5 @@ workflows:
   version: 2
   build_and_test:
     jobs:
+      - lint
       - build
