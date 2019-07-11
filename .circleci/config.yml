@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: run lint
-          command: find . -name "Dockerfile" | xargs hadolint
+          command: docker run runhadolint/hadolint < ./rankingbot/Dockerfile
 
   build:
     machine: true
