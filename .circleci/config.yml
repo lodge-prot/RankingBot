@@ -5,8 +5,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: run build
           command: docker network create --driver bridge rank_net && docker-compose up -d
+      - run:
           name: run test
+          command: docker-compose exec ci_test ping-go containerlist
 
 workflows:
   version: 2
