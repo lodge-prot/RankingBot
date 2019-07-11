@@ -1,13 +1,15 @@
 version: 2.1
 jobs:
   lint:
-    docker:
-      - image: hadolint/hadolint
+    machine: true
     steps:
       - checkout
       - run:
+          name: Install Linter
+          command: git clone https://github.com/hadolint/hadolint && cd hadolint && stack install
+      - run:
           name: run lint
-          command: docker run runhadolint/hadolint < ./rankingbot/Dockerfile
+          command: find . -name "Dockerfile" | xargs hadolint
 
   build:
     machine: true
