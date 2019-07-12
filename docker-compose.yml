@@ -3,7 +3,7 @@ version: '3.3'
 services:
   proxy:
     image: jwilder/nginx-proxy
-    container_name: nginx-proxy
+    container_name: RB_nginx-proxy
     ports:
       - 80:80
     volumes:
@@ -16,21 +16,13 @@ services:
 
   rankingbot:
     build: ./rankingbot
-    container_name: rankingbot
+    container_name: RB_rankingbot
     volumes:
       - ./rankingbot:/root/rankingbot
     ports:
       - 8888:80
     depends_on:
       - db
-    deploy:
-      resources:
-        limits:
-          cpus: '0.70'
-          memory: 512M
-        reservations:
-          cpus: '0.5'
-          memory: 256M
     tty: true
     healthcheck:
       interval: 30s
@@ -39,7 +31,7 @@ services:
 
   db:
     image: mysql:5.7
-    container_name: mysql_host
+    container_name: RB_mysql_host
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: my_database
@@ -60,7 +52,7 @@ services:
       interval: "60s"
 
   phpmyadmin:
-    container_name: phpmyadmin
+    container_name: RB_phpmyadmin
     image: phpmyadmin/phpmyadmin
     environment:
       - PMA_ARBITRARY=1
@@ -79,7 +71,7 @@ services:
       retries: 5
 
   redis:
-    container_name: redis
+    container_name: RB_redis
     image: redis:3.0.5
     environment:
       TZ: Asia/Tokyo
@@ -96,7 +88,7 @@ services:
       retries: 5
 
   rest:
-    container_name: rest
+    container_name: RB_rest
     build: rest
     ports:
       - 5001:5000
@@ -113,7 +105,7 @@ services:
       retries: 5
 
   analysis:
-    container_name: analysis
+    container_name: RB_analysis
     build: ./analysis
     volumes:
       - ./analysis:/root/analysis
