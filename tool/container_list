@@ -1,9 +1,9 @@
 google.com
-RB_rankingbot
-RB_mysql_host
-RB_nginx-proxy
-RB_test_cont
-RB_analysis
 RB_redis
-RB_phpmyadmin
+RB_rankingbot
+RB_nginx-proxy
 RB_rest
+RB_test_cont
+RB_mysql_host
+RB_phpmyadmin
+RB_analysis
