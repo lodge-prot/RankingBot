@@ -101,7 +101,7 @@ sub main {
     }
 
     exec_command @_;
-    get_pip_list "../rankingbot/requirements.txt";
+    get_pip_list "./rankingbot/requirements.txt";
     exit(0);
 }
 

@@ -8,10 +8,17 @@ jobs:
           name: start container
           command: docker pull hadolint/hadolint
                    #find . -name "Dockerfile" | xargs -L 1 bash -c 'echo "${0}" ; docker run --rm -i hadolint/hadolint < "${0}"'
+      #- run:
+        # name: Generate Container List
+        # command: ./tool/gen_container_list.py
+
   build:
     machine: true
     steps:
       - checkout
+      - run:
+          name: check env
+          command: ./tool/check_env.pl
       - run:
           name: run build
           command: docker network create --driver bridge rank_net && docker-compose up -d
