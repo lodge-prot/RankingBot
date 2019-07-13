@@ -10,7 +10,7 @@ jobs:
                    #find . -name "Dockerfile" | xargs -L 1 bash -c 'echo "${0}" ; docker run --rm -i hadolint/hadolint < "${0}"'
       - run:
           name: Generate Container List
-          command: pip install --upgrade pip && pip install yaml && ./tool/gen_container_list.py
+          command: pip3 install --upgrade pip && pip3 install yaml && ./tool/gen_container_list.py
 
   build:
     machine: true
