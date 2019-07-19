@@ -23,14 +23,9 @@ services:
       - 8888:80
     depends_on:
       - db
-    deploy:
-      resources:
-        limits:
-          cpus: '0.70'
-          memory: 512M
-        reservations:
-          cpus: '0.5'
-          memory: 256M
+      - rest
+    environment:
+      PYTHONUNBUFFERED: 0
     tty: true
     healthcheck:
       interval: 30s

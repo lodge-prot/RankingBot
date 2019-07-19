@@ -11,7 +11,7 @@ ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 ENV PYTHONUNBUFFERD 1
 
-RUN apt-get install -y vim less mysql-server tree
+RUN apt-get install -y vim less tree
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 
