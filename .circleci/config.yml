@@ -13,6 +13,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: check env
+          command: ./tool/check_env.pl
+      - run:
           name: run build
           command: docker network create --driver bridge rank_net && docker-compose up -d
       - run:

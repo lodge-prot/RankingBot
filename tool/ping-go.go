@@ -6,7 +6,7 @@ import (
     "io"
     "bufio"
     "os/exec"
-    "time"
+    //"time"
     "flag"
     "strings"
     //"reflect"
@@ -52,11 +52,11 @@ func exec_ping(cl []string) {
 }
 
 func main() {
-    fmt.Println("===== START ===== ", time.Now().Format("15:04:05"))
+    fmt.Println("===== START =====")
 
     flag.Parse()
     var container_list []string = get_container_list_to_text(flag.Args()[0])
     exec_ping(container_list)
 
-    fmt.Println("=====  END  =====  : ", time.Now().Format("15:04:05"))
+    fmt.Println("=====  END  =====")
 }
