@@ -2,6 +2,7 @@
  * コンテナでのメモリ取得量を一時的に増加させるためのツール(監視のテストなど)
  */
 
+/****************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,14 +11,18 @@
 #include <inttypes.h>
 #include <limits.h>
 #include <signal.h>
+/****************************/
 
+/****************************/
 #define CMD 		"memget"
 #define BASE_NUM	10
 #define MAX_STRING 	128
 #define DEBAG
 
+
 #define loop_func() \
 	do { sleep(10); } while(0)
+/****************************/
 
 void usage();
 void num_check(char *numbuf);
@@ -138,8 +143,8 @@ char *use_popen(void) {
 
 }
 
-/*
- * 実際のメモリ確保処理関数
+/* Gets a pointer to the private portion of the super_block
+ * structure from the public part
  */
 int get_mem(unsigned int memNum) {
 	char* RSS = "NA";
