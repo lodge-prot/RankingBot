@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/lodge-prot/RankingBot.svg?style=svg)](https://circleci.com/gh/lodge-prot/RankingBot)
+
 ## Project Title
 
 RankingBot
