@@ -23,12 +23,9 @@ services:
       - 8888:80
     depends_on:
       - db
-<<<<<<< HEAD
       - rest
     environment:
       PYTHONUNBUFFERED: 0
-=======
->>>>>>> 60f4428f66f3952cbd4468a69d1800fd2fcd3f7f
     tty: true
     healthcheck:
       interval: 30s
